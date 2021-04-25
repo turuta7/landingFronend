@@ -1,17 +1,28 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import Url from "./Images/Url";
+import AddUrl from "./Images/AddUrl";
+
+import dotenv from 'dotenv';
+
+import Section from "./text/Section"
+import AddSection from "./text/AddSection"
+
+import Heading from "./text/Heading"
+import AddHeading from "./text/AddHeading"
+dotenv.config();
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <AddUrl />
+    <Url />
+    <AddSection />
+    <Section />
+    <AddHeading />
+    <Heading />    
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+
