@@ -4,7 +4,7 @@ import "./Url.css";
 
 function Url() {
   const URLBackend =
-    "https://turutalandingbackend.herokuapp.com1" || "http://localhost:4000";
+  process.env.REACT_APP_URL  || "http://localhost:4000";
 
   const URL = `${URLBackend}/slider`;
 

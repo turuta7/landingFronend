@@ -3,6 +3,9 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import ReactDOM from "react-dom";
 import "./index.css";
+
+import AddCategory from "./text/AddCategory"
+
 import Url from "./Images/Url";
 import AddUrl from "./Images/AddUrl";
 
@@ -12,13 +15,9 @@ import AddSection from "./text/AddSection";
 import Heading from "./text/Heading";
 import AddHeading from "./text/AddHeading";
 
-import Rout from "./Rout"
+import Rout from "./Rout";
 
 ReactDOM.render(
-
-
-
-  
   <React.StrictMode>
     <Router>
       <div>
@@ -38,26 +37,20 @@ ReactDOM.render(
 
         <Switch>
           <Route exact path="/">
-          <AddUrl />
+            <AddCategory />
+            
           </Route>
           <Route path="/about">
-          <AddSection />
+            <AddSection />
           </Route>
           <Route path="/dashboard">
-          <AddHeading />
+            <AddHeading />
           </Route>
         </Switch>
       </div>
     </Router>
-  );
-
-
-
-
-
-
-{/* <Rout /> */}
-
+    );
+    {/* <Rout /> */}
     {/* <AddUrl />
     <Url />
     <AddSection />
