@@ -1,62 +1,49 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-
-import ReactDOM from "react-dom";
-import "./index.css";
-
-import AddCategory from "./text/AddCategory"
-
-import Url from "./Images/Url";
-import AddUrl from "./Images/AddUrl";
-
-import Section from "./text/Section";
-import AddSection from "./text/AddSection";
-
-import Heading from "./text/Heading";
-import AddHeading from "./text/AddHeading";
 
 import Rout from "./Rout";
 
+// import {
+//   BrowserRouter as Router,
+//   Switch,
+//   Route,
+//   Link,
+//   Redirect,
+//   useParams,
+//   useRouteMatch
+// } from "react-router-dom";
+
+import ReactDOM from "react-dom";
+import AddCategory from "./text/AddCategory";
+// import "./index.css";
+
+// import AddCategory from "./text/AddCategory"
+
+// import Url from "./Images/Url";
+// import AddUrl from "./Images/AddUrl";
+
+// import Section from "./text/Section";
+// import AddSection from "./text/AddSection";
+
+// import Heading from "./text/Heading";
+// import AddHeading from "./text/AddHeading";
+
+// import Rout from "./Rout";
+
 ReactDOM.render(
+  // <Router>
+  //   <Switch>
+  //     {/* <Route path="/:id">
+  //       <Person />
+  //     </Route> */}
+  //     <Route path="/">
+  //       <Redirect to="/news" />
+  //     </Route>
+  //   </Switch>
+  // </Router>,
+
   <React.StrictMode>
-    <Router>
-      <div>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-          <li>
-            <Link to="/dashboard">Dashboard</Link>
-          </li>
-        </ul>
-
-        <hr />
-
-        <Switch>
-          <Route exact path="/">
-            <AddCategory />
-            
-          </Route>
-          <Route path="/about">
-            <AddSection />
-          </Route>
-          <Route path="/dashboard">
-            <AddHeading />
-          </Route>
-        </Switch>
-      </div>
-    </Router>
-    );
-    {/* <Rout /> */}
-    {/* <AddUrl />
-    <Url />
-    <AddSection />
-    <Section />
-    <AddHeading />
-    <Heading /> */}
+    <Rout />
+    <AddCategory />
   </React.StrictMode>,
   document.getElementById("root")
 );

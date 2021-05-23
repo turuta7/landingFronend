@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 
 import axios from "axios";
-import fs from "fs";
-import { title } from "process";
 
 const URLBackend = "http://localhost:4000";
 
@@ -11,6 +9,9 @@ console.log(URL);
 
 function AddCategory() {
   const [imgs, setImg] = useState();
+  const [link, setTextRu] = useState("");
+  const [textEn, setTextEn] = useState("");
+  const [avatar, setAvatar] = useState([]);
 
   useEffect(async () => {
     try {
@@ -23,11 +24,7 @@ function AddCategory() {
     } catch (error) {
       console.log(error);
     }
-  }, []);
-
-  const [link, setTextRu] = useState("");
-  const [textEn, setTextEn] = useState("");
-  const [avatar, setAvatar] = useState([]);
+  }, [avatar]);
 
   // const [picture, setPicture] = useState(null);
   const formData = new FormData();
@@ -36,26 +33,22 @@ function AddCategory() {
   //   console.log("dd");
   // };
   // const config = { headers: {'Content-Type': 'multipart/form-data' } };
-  
 
-  
   const handleSubmit = async (evt) => {
     evt.preventDefault();
-    
+
     console.log("files", avatar);
-    console.log('link', link);
+    console.log("link", link);
     formData.append("link", link);
     formData.append("3333", 4343);
     formData.append("avatar", avatar[0]);
-    await axios ({
-      method: 'patch',
+    await axios({
+      method: "patch",
       url: `${URL}/609aafb4abb5511fb8b04b09`,
-      data: formData
-      ,
-      headers: {'Content-Type': 'multipart/form-data' }
-      })
+      data: formData,
+      headers: { "Content-Type": "multipart/form-data" },
+    });
 
-   
     // axios.post(URL, formData);
     setAvatar([]);
 
