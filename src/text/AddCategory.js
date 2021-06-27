@@ -1,90 +1,76 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 import axios from "axios";
-
-const URLBackend = "http://localhost:4000";
-
+import "../text/Text.css";
+const URLBackend = process.env.REACT_APP_URL;
 const URL = `${URLBackend}/category`;
 console.log(URL);
 
 function AddCategory() {
-  const [imgs, setImg] = useState();
-  const [link, setTextRu] = useState("");
-  const [textEn, setTextEn] = useState("");
+  const [link, setLink] = useState("");
+  const [name, setName] = useState("");
+  const [seoTitle, setSeoTitle] = useState("");
+  const [seoDescription, setSeoDescription] = useState("");
   const [avatar, setAvatar] = useState([]);
 
-  useEffect(async () => {
-    try {
-      const data = await axios.get(URL);
-      console.log(data.data.img, link);
-      const image = data.data.img;
-      const aaa = new Buffer(image).toString("base64");
-
-      setImg(aaa);
-    } catch (error) {
-      console.log(error);
-    }
-  }, [avatar]);
-
-  // const [picture, setPicture] = useState(null);
   const formData = new FormData();
-
-  // const test = (e) => {
-  //   console.log("dd");
-  // };
-  // const config = { headers: {'Content-Type': 'multipart/form-data' } };
-
   const handleSubmit = async (evt) => {
     evt.preventDefault();
-
-    console.log("files", avatar);
-    console.log("link", link);
+    formData.append("name", name);
     formData.append("link", link);
-    formData.append("3333", 4343);
+    formData.append("description", seoDescription);
+    formData.append("title", seoTitle);
     formData.append("avatar", avatar[0]);
-    await axios({
-      method: "patch",
-      url: `${URL}/609aafb4abb5511fb8b04b09`,
-      data: formData,
-      headers: { "Content-Type": "multipart/form-data" },
-    });
 
-    // axios.post(URL, formData);
-    setAvatar([]);
-
-    // window.location.reload();
+    try {
+      await axios({
+        method: "post",
+        url: `${URL}`,
+        data: formData,
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+      setAvatar([]);
+      setName("");
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
     <div className="center heading-background">
-      <img src={`data:image/png;base64,${imgs}`} />
-
       <p>
         <b>Add new category</b>
       </p>
 
       <form onSubmit={handleSubmit}>
         <div>
-          <span>textRu: </span>
+          <span>link: </span>
           <textarea
             type="link"
             value={link}
-            onChange={(e) => setTextRu(e.target.value)}
+            onChange={(e) => setLink(e.target.value)}
           />
-          {/* <span>textEn: </span>
+          <span>name: </span>
           <textarea
             type="text"
-            value={textEn}
-            onChange={(e) => setTextEn(e.target.value)}
-          /> */}
-          <span>file: </span>
-          <input
-            type="file"
-            onChange={(e) => setAvatar(e.target.files)}
-            // value={avatar1}
-            // onChange={test}
-            // name="avatar"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
           />
+          <br />
+          <span>SEO.Title: </span>
+          <textarea
+            type="text"
+            value={seoTitle}
+            onChange={(e) => setSeoTitle(e.target.value)}
+          />
+          <span>SEO.description: </span>
+          <textarea
+            type="text"
+            value={seoDescription}
+            onChange={(e) => setSeoDescription(e.target.value)}
+          />
+          <span>file: </span>
+          <input type="file" onChange={(e) => setAvatar(e.target.files)} />
         </div>
 
         <input type="submit" value="Отправить" />
