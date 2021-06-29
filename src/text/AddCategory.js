@@ -48,32 +48,32 @@ function AddCategory() {
 
       <form onSubmit={handleSubmit}>
         <div>
-          <span>link: </span>
+          <p>link: </p>
           <textarea
             type="link"
             value={link}
             onChange={(e) => setLink(e.target.value)}
           />
-          <span>name: </span>
+          <p>name: </p>
           <textarea
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
           <br />
-          <span>SEO.Title: </span>
+          <p>SEO.Title: </p>
           <textarea
             type="text"
             value={seoTitle}
             onChange={(e) => setSeoTitle(e.target.value)}
           />
-          <span>SEO.description: </span>
+          <p>SEO.description: </p>
           <textarea
             type="text"
             value={seoDescription}
             onChange={(e) => setSeoDescription(e.target.value)}
           />
-          <span>file: </span>
+          <p>file: </p>
           <input type="file" onChange={(e) => setAvatar(e.target.files)} />
         </div>
 
