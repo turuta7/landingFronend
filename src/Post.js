@@ -72,16 +72,21 @@ const Posts = () => {
     <div>
       <form onSubmit={handleSubmit}>
         <input type="button" value="DELETE" onClick={() => deleteData()} />
+        <p>link</p>
         <input defaultValue={link} onChange={(e) => setLink(e.target.value)} />
+        <p>name</p>
         <input defaultValue={name} onChange={(e) => setName(e.target.value)} />
-        <input
+        <p>seo Title</p>
+        <input       
           defaultValue={seoTitle}
           onChange={(e) => setSeoTitle(e.target.value)}
         />
+        <p>seo Description</p>
         <input
           defaultValue={seoDescription}
           onChange={(e) => setSeoDescription(e.target.value)}
         />
+         <p>new photo</p>
         <input type="file" onChange={(e) => setAvatar(e.target.files)} />
         <input type="submit" value="Обновить" />
         <img src={`data:image/png;base64,${img}`} alt="avatar" />
