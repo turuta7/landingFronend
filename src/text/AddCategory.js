@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
 
 import axios from "axios";
 import "../text/Text.css";
@@ -10,12 +9,6 @@ console.log(URL);
 
 
 function AddCategory() {
-
-  const history = useHistory();
-
-  const redirect = (path) => {
-    history.push(path);
-  };
 
   const [link, setLink] = useState("");
   const [name, setName] = useState("");
@@ -41,7 +34,7 @@ function AddCategory() {
       });
       setAvatar([]);
       setName("");
-      redirect("/");
+      window.location.reload();
     } catch (error) {
       console.error(error);
     }
